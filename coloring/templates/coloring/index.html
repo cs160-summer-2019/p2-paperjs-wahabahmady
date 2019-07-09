@@ -58,13 +58,35 @@
 			// your rectangle gradient interaction goes in this function
 			// you may also add code outside of the function (e.g., global variables)
 			function myGradientInteraction(){
+        
 				var tool = new paper.Tool();
+        var React = new paper.Path.Rectangle({size: new paper.Size(400,300),
+                                               center: paper.view.center, 
+                                               fillColor: 'red'});
+        
+        
+      
 
 				tool.onMouseDown = function (event) {
 
 				}
+        
+        
 
 				tool.onMouseUp = function (event) {
+          Color1 = cp.history[cp.history.length -2];
+          Color2 = cp.history[cp.history.length - 1];
+          start = event.downPoint;
+          end = event.point;
+         
+          React.fillColor = {
+            gradient: {
+              stops: [Color1, Color2]
+            },
+            origin: start, 
+            destination: end
+          }
+          
 					
 				}
 			}
